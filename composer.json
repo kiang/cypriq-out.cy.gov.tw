@@ -1,0 +1,8 @@
+{
+    "name": "kiang/pdf-crawler",
+    "description": "PDF Crawler with duplicate detection",
+    "type": "project",
+    "require": {
+        "fabpot/goutte": "^4.0"
+    }
+}
