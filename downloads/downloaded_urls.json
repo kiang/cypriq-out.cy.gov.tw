@@ -1518,5 +1518,13 @@
         "date": "114-07-01",
         "size": 176991,
         "downloaded_at": "2026-01-02 06:00:05"
+    },
+    "7d203e3d8e324b7d5d9c52d8d8def4abf82f4580ca35cc16efb93d4af7c8d0cc": {
+        "filename": "260_114-07-03_1_1.pdf",
+        "url": "https:\/\/www-ws.cy.gov.tw\/Download.ashx?u=LzAwMS9VcGxvYWQvMS9yZWxmaWxlLzg4NjEvMzQyNjMvY2Y3ZmY5ZTctOGVjOC00NWFjLWIyYWMtNzdlM2MxYzY0MjQ4LnBkZg%3d%3d&n=44CQ5buJ5pS%2f5bCI5YiK56ysMjYw5pyf44CR55uu6YyELnBkZg%3d%3d&icon=..pdf",
+        "issue": "260",
+        "date": "114-07-03",
+        "size": 122472,
+        "downloaded_at": "2026-01-04 06:00:10"
     }
 }
