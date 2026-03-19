@@ -1766,5 +1766,21 @@
         "date": "114-09-16",
         "size": 94532,
         "downloaded_at": "2026-03-18 06:00:05"
+    },
+    "5eefd14bea5ca9b0f32ce015ed5614e1a291829c70e0162025637fbda78b016c": {
+        "filename": "299_115-03-19_1.pdf",
+        "url": "https:\/\/www-ws.cy.gov.tw\/Download.ashx?u=LzAwMS9VcGxvYWQvMS9yZWxmaWxlLzg4NjEvMzY5ODYvOWMwMzA0ZGItNWM1Zi00YzE0LTgzOTQtZmYwZjNmYmMyM2MwLnBkZg%3d%3d&n=44CQ5buJ5pS%2f5bCI5YiK56ysMjk55pyf44CRLnBkZg%3d%3d&icon=..pdf",
+        "issue": "299",
+        "date": "115-03-19",
+        "size": 10494395,
+        "downloaded_at": "2026-03-20 06:00:05"
+    },
+    "16ff4d49b10f1bdad75c7f9865755060d72ad6fa64efbbf11a502bd773c719cd": {
+        "filename": "282_114-09-18_1_1.pdf",
+        "url": "https:\/\/www-ws.cy.gov.tw\/Download.ashx?u=LzAwMS9VcGxvYWQvMS9yZWxmaWxlLzg4NjEvMzQ5MzEvMWFiMDI5NjItODQ5Zi00ODY3LTgxYWYtMTYyNDIxMTUwYmYzLnBkZg%3d%3d&n=44CQ5buJ5pS%2f5bCI5YiK56ysMjgy5pyf44CR55uu6YyELnBkZg%3d%3d&icon=..pdf",
+        "issue": "282",
+        "date": "114-09-18",
+        "size": 111922,
+        "downloaded_at": "2026-03-20 06:00:05"
     }
 }
