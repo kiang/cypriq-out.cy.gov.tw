@@ -8,6 +8,7 @@ import glob
 import json
 import os
 import re
+import subprocess
 import sys
 
 import pandas as pd
@@ -506,9 +507,12 @@ def main():
     else:
         pdf_files = sorted(glob.glob(os.path.join(downloads_dir, '*.pdf')))
 
+    missing_csv = os.path.join(script_dir, 'missing.csv')
+
     total = len(pdf_files)
     processed = 0
     skipped = 0
+    missing = []
 
     for idx, pdf_path in enumerate(pdf_files, 1):
         stem = os.path.splitext(os.path.basename(pdf_path))[0]
@@ -524,7 +528,19 @@ def main():
         pdf_type, result = process_pdf(pdf_path)
 
         if result is None:
-            print('no data found')
+            parts = stem.split('_')
+            issue = parts[0]
+            date = parts[1] if len(parts) > 1 else ''
+            pages = ''
+            try:
+                r = subprocess.run(['pdfinfo', pdf_path], capture_output=True, text=True)
+                for line in r.stdout.split('\n'):
+                    if 'Pages' in line:
+                        pages = line.split()[-1]
+            except Exception:
+                pass
+            missing.append((stem, issue, date, pages))
+            print('no data found (TOC only)')
             skipped += 1
             continue
 
@@ -539,7 +555,14 @@ def main():
 
         processed += 1
 
-    print(f'\nDone. Processed: {processed}, Skipped: {skipped}, Total: {total}')
+    if missing:
+        with open(missing_csv, 'w', encoding='utf-8') as f:
+            f.write('filename,issue,date,pages\n')
+            for stem, issue, date, pages in missing:
+                f.write(f'{stem}.pdf,{issue},{date},{pages}\n')
+        print(f'\nWrote {len(missing)} TOC-only entries to {missing_csv}')
+
+    print(f'\nDone. Processed: {processed}, Skipped (TOC/exists): {skipped}, Total: {total}')
 
 
 if __name__ == '__main__':
