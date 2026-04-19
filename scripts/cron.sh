@@ -32,3 +32,7 @@ git commit -m "Auto-update: Downloaded ${NEW_COUNT} new/updated files
 $(date '+%Y-%m-%d %H:%M:%S')"
 
 echo "Committed ${NEW_COUNT} files."
+
+# Push to remote
+git push
+echo "Pushed to remote."
