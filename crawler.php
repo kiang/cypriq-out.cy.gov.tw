@@ -146,6 +146,24 @@ class PdfCrawler
         }
     }
 
+    private function hasFullPdfForIssue(string $issue, string $ext): bool
+    {
+        if ($ext !== 'pdf') {
+            return false;
+        }
+
+        $pattern = $this->downloadDir . '/' . $issue . '_*_1.pdf';
+        $matches = glob($pattern);
+
+        foreach ($matches as $existing) {
+            if (filesize($existing) > 500 * 1024) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private function downloadFile(array $link, int $current, int $total): void
     {
         $url = $link['url'];
@@ -174,6 +192,13 @@ class PdfCrawler
             return;
         }
 
+        // Skip TOC-only PDF if a full PDF already exists for this issue
+        if ($this->hasFullPdfForIssue($issue, $ext)) {
+            echo "  SKIP: Full PDF already exists for issue {$issue}\n\n";
+            $this->skipCount++;
+            return;
+        }
+
         echo "  URL: {$url}\n";
 
         try {
@@ -185,6 +210,13 @@ class PdfCrawler
 
             $response = $httpClient->request('GET', $url);
             $content = $response->getContent();
+
+            // Skip saving if content is a small TOC and a full PDF already exists
+            if ($ext === 'pdf' && strlen($content) < 500 * 1024 && $this->hasFullPdfForIssue($issue, $ext)) {
+                echo "  SKIP: Downloaded content is TOC-only, full PDF exists\n\n";
+                $this->skipCount++;
+                return;
+            }
 
             $filepath = $this->downloadDir . '/' . $filename;
 
