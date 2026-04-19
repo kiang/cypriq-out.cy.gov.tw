@@ -152,7 +152,7 @@ class PdfCrawler
             return false;
         }
 
-        $pattern = $this->downloadDir . '/' . $issue . '_*_1.pdf';
+        $pattern = $this->downloadDir . '/' . $issue . '_*.pdf';
         $matches = glob($pattern);
 
         foreach ($matches as $existing) {
