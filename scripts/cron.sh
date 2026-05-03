@@ -9,6 +9,10 @@ PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_DIR" || exit 1
 
 echo "=== $(date '+%Y-%m-%d %H:%M:%S') ==="
+
+# Pull latest changes first
+git pull
+
 echo "Running crawler..."
 
 # Run the crawler
